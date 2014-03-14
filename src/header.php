@@ -16,6 +16,7 @@
         <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans|Oswald|Ubuntu|Patua+One" type="text/css" rel="stylesheet" />-->
         <link href="css/custom.css" type="text/css" rel="stylesheet" />
         <link href="css/signin.css" type="text/css" rel="stylesheet" />
+         <link href="css/footer.css" type="text/css" rel="stylesheet" />
         <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery-ui.js"></script>
@@ -29,7 +30,7 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 
                 <div class="navbar-inner">
-                    <a class="col-lg-offset-2 pull-left" href="#"><img src="logo.png"
+                    <a class="col-lg-offset-2 pull-left" href="index.php"><img src="img/logo.png"
                                                                        height="60" alt="logo"
                                                                        /></a>
                     <div class="col-lg-offset-3">
@@ -48,6 +49,10 @@
                             <ul class="nav navbar-nav">
 
                                 <?php
+								//démarrage d'une session
+								session_start();
+								//verification la variable de session a été initialisé
+								if (isset($_POST['NAME']))
                                 if ($_SESSION["NAME"]) {
                                     echo'<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -146,4 +151,4 @@
 
                 </div>
                 <div class="col-lg-10">
-
+</div>

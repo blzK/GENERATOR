@@ -5,7 +5,7 @@ require 'Fonctions.php';
 include 'header.php';
 ?>
 <div class="row">
-    <h4 class="titre">Listes des audiances</h4>
+    <h4 class="titre">Liste des audiances</h4>
     <table class="table table-condensed table-striped">
         <tr><th>RG</th><th>Jurdiction</th><th>Type d'audiance</th><th>Secteur d'audiance</th><th>Date d'audiance</th><th>Modifier</th><th>Supprimer</th></tr>
         <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>

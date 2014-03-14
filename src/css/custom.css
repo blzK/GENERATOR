@@ -6,9 +6,9 @@
         Purpose of the stylesheet follows.
 */
 
-body { 
-    background-color: #D3D3D3;
-    padding-top: 60px;
+body {
+	background-color: #CCCC99;
+	padding-top: 60px;
 }
 .container{
     background-color: #F8F8F8;
@@ -22,7 +22,7 @@ body {
 .affiche{
     background-color: white;
     border-style:solid;
-    border-color:yellowgreen;
+    border-color:black;
     border-radius: 5px;
     padding: 5px;
     opacity: 0.8;
@@ -87,11 +87,11 @@ p{
 }
 
 .navbar-inner, .navbar-default {
-    font-family: 'Patua One', cursive;
-    background-color:goldenrod;
-    background-image: none;
-    background-repeat: no-repeat;
-    filter: none;
+	font-family: 'Patua One', cursive;
+	background-color: goldenrod;
+	background-image: url(../img/zwartevilt.png);
+	background-repeat: repeat;
+	filter: none;
 }
 
 
@@ -193,9 +193,3 @@ p{
     color: yellowgreen;
     font-weight: bold;
 }
-
-
-
-
-
-

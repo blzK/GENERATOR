@@ -1,12 +1,13 @@
 
                                                         </div>
+                                                       
                                                         <div class="col-lg-1">
                                                            
                                                         </div>
                                                     </div>
 
                                                     <hr/>
-                                                    <footer class="" style="text-align: center">
+                                                    <footer class="footer" style="text-align: center">
                                                         
                                                         <pre>  <a>Contactez-nous</a></pre>
                                                         <a href="#">&copy; web 2.0</a> 2014,tous droits réservés

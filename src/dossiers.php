@@ -55,7 +55,7 @@ include 'header.php';
         </form>
     </div>
     <div class="col-lg-9">
-        <h4 class="titre">Listes des dossiers</h4>
+        <h4 class="titre">Liste des dossiers</h4>
         <?php
         if (filter_input(INPUT_POST, 'defenseur') ||
                 filter_input(INPUT_POST, 'id_sal', FILTER_VALIDATE_INT) ||

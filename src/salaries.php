@@ -5,7 +5,7 @@ require 'Fonctions.php';
 include 'header.php';
 ?>
 <div class="row">
-    <h4 class="titre">Listes des salariés</h4>
+    <h4 class="titre">Liste des salariés</h4>
     <table class="table table-condensed table-striped">
         <tr><th>Prénom & Nom</th><th>Em@il</th><th>Date de naissance</th><th>Modifier</th><th>Supprimer</th></tr>
         <?php foreach (Fonctions::getTables("salarie") as $salaries => $salarie) : ?>

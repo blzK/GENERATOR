@@ -1,6 +1,8 @@
 body {
-  padding-bottom: 40px;
-  background-color: #eee;
+	padding-bottom: 40px;
+	background-color: #FFF;
+	background-image: url(../img/escheresque.png);
+	background-repeat: repeat;
 }
 
 .form-signin {
