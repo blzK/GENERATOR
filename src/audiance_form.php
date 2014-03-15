@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-<h4 class="titre">Edition d'une audiance</h4>
+<h4 class="titre">Edition d'une audience</h4>
 <hr/>
 <form action="save_audiance.php" method="post" class="form-horizontal" role="form">
 <div class="form-group">
@@ -11,22 +11,29 @@ include 'header.php';
     </div>
   </div>
 <div class="form-group">
-    <label for="jurdiction" class="col-sm-2 control-label">Jurdiction</label>
+    <label for="jurdiction" class="col-sm-2 control-label">Juridiction</label>
     <div class="col-sm-10">
-      <input type="text" name="jurdiction" class="form-control" id="jurdiction" required placeholder="jurdiction">
+      <input type="text" name="jurdiction" class="form-control" id="jurdiction" required placeholder="juridiction">
     </div>
   </div>
 
 <div class="form-group">
-    <label for="type_aud" class="col-sm-2 control-label">type d'audiance</label>
+    <label for="type_aud" class="col-sm-2 control-label">type d'audience</label>
     <div class="col-sm-10">
-      <input type="text" name="type_aud" class="form-control" id="type_aud" required placeholder="type d'audiance">
+      <input type="text" name="type_aud" class="form-control" id="type_aud" required placeholder="type d'audience">
     </div>
   </div>
 <div class="form-group">
-    <label for="sect_aud" class="col-sm-2 control-label">secteur d'audiance</label>
+    <label for="sect_aud" class="col-sm-2 control-label">section</label>
     <div class="col-sm-10">
-      <input type="text" name="sect_aud" class="form-control" id="sect_aud" required placeholder="secteur d'audiance">
+      <input type="text" name="sect_aud" class="form-control" id="sect_aud" required placeholder="section">
+    </div>
+  </div>
+    
+    <div class="form-group">
+    <label for="date_aud" class="col-sm-2 control-label">date de l'audience</label>
+    <div class="col-sm-10">
+        <input type="date" name="date_aud" class="form-control" id="sect_aud" required placeholder="date de l'audience">
     </div>
   </div>
   

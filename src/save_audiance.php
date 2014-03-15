@@ -12,11 +12,12 @@ if (filter_input(INPUT_POST, 'rg') && filter_input(INPUT_POST, 'jurdiction') &&
         $jurdiction = filter_input(INPUT_POST, 'jurdiction');
         $type_aud = filter_input(INPUT_POST, 'type_aud');
         $sect_aud = filter_input(INPUT_POST, 'sect_aud');
+        $date_aud = filter_input(INPUT_POST, 'date_aud');
         $auteur = NULL;
         include 'header.php';
-        if (Fonctions::setAudiance($rg, $jurdiction, $type_aud, $sect_aud, $auteur)) {
+        if (Fonctions::setAudiance($rg, $jurdiction, $type_aud, $sect_aud, $date_aud,$auteur)) {
 
-            echo "<div class='alert alert-success'> L'audiance est enregistrée!</div>";
+            echo "<div class='alert alert-success'> L'audience est enregistrée!</div>";
         } else {
             echo "<div class='alert alert-danger'> l' enregistrement a rencontré un problème.</div>";
         }
