@@ -88,16 +88,16 @@
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>Audiances <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>Audiences <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li class="list-group-item">
                                             <a href="audiance_form.php">
-                                                Creer une audiance
+                                                Ajouter une audience
                                             </a>
                                         </li>
                                         <li class="list-group-item">
                                             <a href="audiances.php">
-                                                Afficher les audiances
+                                                Afficher les audiences
                                             </a>
                                         </li>
 

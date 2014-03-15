@@ -7,7 +7,7 @@ include 'header.php';
 <div class="row">
     <h4 class="titre">Liste des audiences</h4>
     <table class="table table-condensed table-striped">
-        <tr><th>RG</th><th>Jurdiction</th><th>Type d'audience</th><th>Secteur d'audience</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
+        <tr><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
         <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>
             <tr id="line_<?php echo $audiance['id']; ?>">
                 <td><?php echo $audiance['rg']; ?></td>
