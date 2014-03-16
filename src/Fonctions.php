@@ -198,7 +198,11 @@ class Fonctions {
         $expl = explode("-", $date);
         return $expl[2] . "/" . $expl[1] . "/" . $expl[0];
     }
-
+    /**
+     * 
+     * @param type $dateTime
+     * @return date in french expression and time
+     */
     static function dateTimeSqlToFr($dateTime) {
         $dt = explode(" ", $dateTime);
         $expl = explode("-", $dt[0]);
