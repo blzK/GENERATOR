@@ -102,10 +102,9 @@ include 'header.php';
                 <!-- Table -->
                 <h4 class="titre">Liste des audiences</h4>
                 <table class="table table-condensed table-striped">
-                    <tr><th>id_dossier</th><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
+                    <tr><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
                     <?php foreach (Fonctions::getAudienceByIdDossier($dossier['id']) as $audiances => $audiance) : ?>
                         <tr id="line-audiance_<?php echo $audiance['id']; ?>">
-                            <td><?php echo $dossier['id'].' '.$audiance['id_dossier']; ?></td>
                             <td><?php echo $audiance['rg']; ?></td>
                             <td><?php echo $audiance['jurdiction']; ?></td>
                             <td><?php echo $audiance['type_aud']; ?></td>
