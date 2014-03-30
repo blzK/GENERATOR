@@ -16,6 +16,7 @@ if (filter_input(INPUT_GET, 'form')) {
 <h4 class="titre">Edition d'une audiance</h4>
 <hr/>
 <form action="update_audiance.php" method="post" class="form-horizontal" role="form">
+    <input type="hidden" name="id" value="<?php echo $audiance['id']; ?>">
     <div class="form-group">
         <label for="rg" class="col-sm-2 control-label">RG</label>
         <div class="col-sm-10">
@@ -42,6 +43,12 @@ if (filter_input(INPUT_GET, 'form')) {
         </div>
     </div>
 
+    <div class="form-group">
+        <label for="date_aud" class="col-sm-2 control-label">date de l'audience</label>
+        <div class="col-sm-10">
+            <input type="date" name="date_aud" value="<?php echo $audiance['date_aud']; ?>" class="form-control" id="sect_aud" required placeholder="date de l'audience">
+        </div>
+    </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-primary">Valider</button>

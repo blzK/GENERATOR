@@ -1,4 +1,4 @@
 <?php
 
-$conn = mysql_connect("localhost", "web2", "") or die("impossible de trouver localhost");
+$conn = mysql_connect("localhost", "root", "") or die("erreur au niveau des identifiants, ou nom du serveur");
 mysql_select_db("web2", $conn) or die("Erreur de la connexion à la base de donnée");

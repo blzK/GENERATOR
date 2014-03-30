@@ -42,7 +42,7 @@ include 'header.php';
                 <select id="aud" name="id_aud" class="form-control">
                     <option selected="selected" disabled="disabled">Séléctionner une audiance</option>
             <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>
-                                            <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
+                                                                                                                    <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
             <?php endforeach; ?>         
                 </select>
             </div>
@@ -65,19 +65,25 @@ include 'header.php';
         <?php else : ?>
             <?php $dossierss = Fonctions::getTables("dossier"); ?>
         <?php endif; ?>
-        <table class="table table-condensed table-striped">
-            <tr><th>Numéro</th><th>Défenseur</th><th>Date du dossier</th><th>Modifier</th><th>MAJ</th><th>Supprimer</th></tr>
-            <?php foreach ($dossierss as $dossiers => $dossier) : ?>
-                <tr id="line_<?php echo $dossier['id']; ?>">
-                    <td><?php echo "DOSS_" . $dossier['id']; ?></td>
-                    <td><?php echo $dossier['defenseur']; ?></td>
-                    <td><?php echo Fonctions::dateTimeSqlToFr($dossier['date_doss']); ?></td>
-                    <td>
-                        <a href="manager/modif_dossier_form.php?val=<?php echo $dossier['id']; ?>" class="btn btn-primary" id="modif_<?php echo $dossier['id']; ?>">
-                            Modifier
-                        </a>
-                    </td>
-                    <td >
+        <?php foreach ($dossierss as $dossiers => $dossier) : ?>
+            <div class="panel panel-primary" id="line_<?php echo $dossier['id']; ?>">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><?php echo "DOSS_" . $dossier['id']; ?> créé le <?php echo Fonctions::dateTimeSqlToFr($dossier['date_doss']); ?></div>
+                <div class="panel-body">
+                    <h2>Défenseur: <?php echo $dossier['defenseur']; ?></h2>
+                    <p>
+
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <a href="audiance_form.php?val=<?php echo $dossier['id']; ?>" id="modif_<?php echo $dossier['id']; ?>">
+                                Ajouter une audiance
+                            </a>
+                        </label>
+                        <label class="btn btn-info">
+                            <a href="manager/modif_dossier_form.php?val=<?php echo $dossier['id']; ?>" id="modif_<?php echo $dossier['id']; ?>">
+                                Modifier
+                            </a>
+                        </label>                        
                         <label class="active" id-active="<?php echo $dossier['id']; ?>" id="actif_<?php echo $dossier['id']; ?>" >
                             <?php if ($dossier['actif'] == 1) : ?>
                                 <div class="btn btn-success">Activé</div>
@@ -85,15 +91,42 @@ include 'header.php';
                                 <div class="btn btn-danger">Désactivé</div>
                             <?php endif; ?>
                         </label>
-                    </td>
-                    <td>
                         <label id-delete="<?php echo $dossier['id']; ?>" class="delete btn btn-danger" id="sup_<?php echo $dossier['id']; ?>">
                             Supprimer
                         </label>
-                    </td>
-                </tr> 
-            <?php endforeach; ?>
-        </table>
+                    </div>
+
+                    </p>
+                </div>
+
+                <!-- Table -->
+                <h4 class="titre">Liste des audiences</h4>
+                <table class="table table-condensed table-striped">
+                    <tr><th>id_dossier</th><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
+                    <?php foreach (Fonctions::getAudienceByIdDossier($dossier['id']) as $audiances => $audiance) : ?>
+                        <tr id="line-audiance_<?php echo $audiance['id']; ?>">
+                            <td><?php echo $dossier['id'].' '.$audiance['id_dossier']; ?></td>
+                            <td><?php echo $audiance['rg']; ?></td>
+                            <td><?php echo $audiance['jurdiction']; ?></td>
+                            <td><?php echo $audiance['type_aud']; ?></td>
+                            <td><?php echo $audiance['sect_aud']; ?></td>
+                            <td><?php echo Fonctions::dateTimeSqlToFr($audiance['date_aud']); ?></td>
+                            <td>
+                                <a href="manager/modif_audiance_form.php?val=<?php echo $audiance['id']; ?>" class="btn btn-primary" id="modif-audiance_<?php echo $audiance['id']; ?>">
+                                    Modifier
+                                </a>
+                            </td>
+                            <td>
+                                <label id-delete-audiance="<?php echo $audiance['id']; ?>" class="delete-audiance btn btn-danger" id="sup-audiance_<?php echo $audiance['id']; ?>">
+                                    Supprimer
+                                </label>
+                            </td>
+                        </tr> 
+                    <?php endforeach; ?>
+                </table>
+            </div>
+
+        <?php endforeach; ?>
     </div>
 </div>
 <script type="text/javascript">
@@ -107,6 +140,13 @@ include 'header.php';
             if (confirm('Etes-vous sûr de vouloir supprimer ce dossier ?')) {
                 $("#sup_" + id).load("manager/delete_dossier.php?val=" + id)
                 $("#line_" + id).hide();
+            }
+        });
+        $(".delete-audiance").click(function() {
+            var id = $(this).attr("id-delete-audiance");
+            if (confirm('Etes-vous sûr de vouloir supprimer cette audience ?')) {
+                $("#sup-audiance_" + id).load("manager/delete_audiance.php?val=" + id)
+                $("#line-audiance_" + id).hide();
             }
         });
     });

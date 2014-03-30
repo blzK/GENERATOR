@@ -50,18 +50,6 @@ if (filter_input(INPUT_GET, 'form')) {
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="aud" class="col-sm-2 control-label">Audiance</label>
-        <div class="col-sm-10">
-            <select id="aud" name="id_aud" class="form-control">
-                <option selected="selected" disabled="disabled">Séléctionner une audiance</option>
-                <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>
-                    <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
-                <?php endforeach; ?>         
-            </select>
-        </div>
-    </div>
-
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
