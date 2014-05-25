@@ -10,6 +10,7 @@ if (filter_input(INPUT_GET, 'val')) {
 <h4 class="titre">Edition d'une audience</h4>
 <hr/>
 <form action="save_audiance.php" method="post" class="form-horizontal" role="form">
+    <input type="hidden" name="auteur" value="<?php echo $_SESSION["NAME"]; ?>">
     <div class="form-group">
         <label for="rg" class="col-sm-2 control-label">RG</label>
         <div class="col-sm-10">

@@ -14,7 +14,7 @@ if (filter_input(INPUT_POST, 'rg') && filter_input(INPUT_POST, 'jurdiction') &&
         $sect_aud = filter_input(INPUT_POST, 'sect_aud');
         $date_aud = filter_input(INPUT_POST, 'date_aud');
         $id_dossier = filter_input(INPUT_POST, 'id_dossier');
-        $auteur = NULL;
+        $auteur = filter_input(INPUT_POST, 'auteur');
         include 'header.php';
         if (Fonctions::setAudiance($rg, $jurdiction, $type_aud, $sect_aud, $id_dossier, $auteur)) {
 

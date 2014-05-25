@@ -17,7 +17,7 @@ if (filter_input(INPUT_POST, 'nom') && filter_input(INPUT_POST, 'siren') &&
         $ad_soc = filter_input(INPUT_POST, 'ad_soc');
         $avad_soc = filter_input(INPUT_POST, 'avad_soc');
         $bonis_soc = filter_input(INPUT_POST, 'bonis_soc');
-        $auteur = NULL;
+        $auteur = filter_input(INPUT_POST, 'auteur');
         if (Fonctions::setSociete($nom, $siren, $ape, $sect_soc, $av_soc, $type, $ad_soc, $avad_soc, $bonis_soc, $auteur)) {
 
             header("Location:societes.php");

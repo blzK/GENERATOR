@@ -16,6 +16,7 @@ if (filter_input(INPUT_GET, 'form')) {
 <h4 class="titre">Edition d'un dossier</h4>
 <hr/>
 <form action="save_dossier.php" method="post" class="form-horizontal" role="form">
+    <input type="hidden" name="auteur" value="<?php echo $_SESSION["NAME"] ;?>">
     <div class="form-group">
         <label for="defenseur" class="col-sm-2 control-label">Défenseur</label>
         <div class="col-sm-10">

@@ -16,6 +16,7 @@ if (filter_input(INPUT_GET, 'form')) {
 <h4 class="titre">Edition d'un salarié</h4>
 <hr/>
 <form class="form-horizontal" role="form" action="save_salarie.php" method="post">
+    <input type="hidden" name="auteur" value="<?php echo $_SESSION["NAME"]; ?>">
     <div class="form-group">
         <label for="nom_sal" class="col-sm-2 control-label">Nom du salarié</label>
         <div class="col-sm-10">

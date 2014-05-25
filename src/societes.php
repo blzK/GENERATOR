@@ -9,15 +9,17 @@ include 'header.php';
         <div class="panel-heading">
             <h1 class="panel-title titre">Liste des sociétés</h1>
         </div>
+        
         <div class="panel-body">
             <table class="table table-condensed table-striped">
-                <tr><th>Nom</th><th>Siren</th><th>APE</th><th>Conseil</th><th>Modifier</th><th>Supprimer</th></tr>
+                <tr><th>Nom</th><th>Siren</th><th>APE</th><th>Conseil</th><th>Auteur</th><th>Modifier</th><th>Supprimer</th></tr>
                 <?php foreach (Fonctions::getTables("societe") as $societes => $societe) : ?>
                     <tr id="line_<?php echo $societe['id']; ?>">
                         <td><?php echo $societe['nom']; ?></td>
                         <td><?php echo $societe['siren']; ?></td>
                         <td><?php echo $societe['ape']; ?></td>
                         <td><?php echo $societe['av_soc']; ?></td>
+                        <td><?php echo $societe['auteur']; ?></td>
 
                         <td>
                             <a class="btn btn-primary" id="modif_<?php echo $societe['id']; ?>"  href="manager/modif_societe_form.php?val=<?php echo $societe['id']; ?>">

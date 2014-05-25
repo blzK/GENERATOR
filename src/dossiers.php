@@ -42,7 +42,7 @@ include 'header.php';
                 <select id="aud" name="id_aud" class="form-control">
                     <option selected="selected" disabled="disabled">Séléctionner une audiance</option>
             <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>
-                                                                                                                                <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
+                                                                                                                                        <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
             <?php endforeach; ?>         
                 </select>
             </div>
@@ -55,7 +55,7 @@ include 'header.php';
         </form>
     </div>
     <div class="col-lg-9">
-        <h4 class="titre">Liste des dossiers</h4>
+        <h2 class="titre">Liste des dossiers</h2><hr/>
         <?php
         if (filter_input(INPUT_POST, 'defenseur') ||
                 filter_input(INPUT_POST, 'id_sal', FILTER_VALIDATE_INT) ||
@@ -68,12 +68,17 @@ include 'header.php';
         <?php foreach ($dossierss as $dossiers => $dossier) : ?>
             <div class="panel panel-primary" id="line_<?php echo $dossier['id']; ?>">
                 <!-- Default panel contents -->
-                <div class="panel-heading"><?php echo "DOSS_" . $dossier['id']; ?> créé le <?php echo Fonctions::dateTimeSqlToFr($dossier['date_doss']); ?></div>
+                <div class="panel-heading">
+                    <h4> <?php echo "DOSS_" . $dossier['id']; ?></h4>
+                    créé par <?php echo $dossier['auteur']; ?>  le <?php echo Fonctions::dateTimeSqlToFr($dossier['date_doss']); ?>
+                </div>
                 <div class="panel-body">
-                    <?php $salarie=Fonctions::getSalarieById($dossier['id_sal']); ?>
-                    <h2>Salarié: <?php echo $salarie['nom_sal']." ".$salarie['prenom_sal']; ?></h2>
-                    <h2>Défenseur: <?php echo $dossier['defenseur']; ?></h2>
-                    <p>
+                    <?php $salarie = Fonctions::getSalarieById($dossier['id_sal']); ?>
+                    <?php $societe = Fonctions::getSocieteById($dossier['id_soc']); ?>
+
+                    <h4><b>Salarié</b>: <?php echo $salarie['nom_sal'] . " " . $salarie['prenom_sal']; ?></h4>
+                    <h4><b>Entreprise</b>: <?php echo $societe['nom'] ; ?></h4>
+                    <h4><b>Défenseur</b>: <?php echo $dossier['defenseur']; ?></h4>
 
                     <div class="btn-group">
                         <label class="btn btn-default">
@@ -108,7 +113,7 @@ include 'header.php';
                     </div>
                     <div class="panel-body">
                         <table class="table table-condensed table-striped">
-                            <tr><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
+                            <tr><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Auteur</th><th>Modifier</th><th>Supprimer</th></tr>
                             <?php foreach (Fonctions::getAudienceByIdDossier($dossier['id']) as $audiances => $audiance) : ?>
                                 <tr id="line-audiance_<?php echo $audiance['id']; ?>">
                                     <td><?php echo $audiance['rg']; ?></td>
@@ -116,6 +121,7 @@ include 'header.php';
                                     <td><?php echo $audiance['type_aud']; ?></td>
                                     <td><?php echo $audiance['sect_aud']; ?></td>
                                     <td><?php echo Fonctions::dateTimeSqlToFr($audiance['date_aud']); ?></td>
+                                    <td><?php echo $audiance['auteur']; ?></td>
                                     <td>
                                         <a href="manager/modif_audiance_form.php?val=<?php echo $audiance['id']; ?>" class="btn btn-primary" id="modif-audiance_<?php echo $audiance['id']; ?>">
                                             Modifier

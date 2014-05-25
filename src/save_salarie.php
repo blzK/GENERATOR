@@ -14,7 +14,7 @@ if (filter_input(INPUT_POST, 'nom_sal') && filter_input(INPUT_POST, 'prenom_sal'
     $nation_sal = filter_input(INPUT_POST, 'nation_sal');
     $ad_sal = filter_input(INPUT_POST, 'ad_sal');
     $societe_sal = NULL;
-    $auteur = NULL;
+    $auteur = filter_input(INPUT_POST, 'auteur');
     $email = filter_input(INPUT_POST, 'email');
     if (Fonctions::setSalarie($nom, $prenom, $bdate_sal, $nation_sal, $ad_sal, $societe_sal, $email, $auteur)) {
 

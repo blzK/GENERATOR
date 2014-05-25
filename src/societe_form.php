@@ -14,6 +14,7 @@ if (filter_input(INPUT_GET, 'form')) {
 <h4 class="titre">Edition d'une société</h4>
 <hr/>
 <form action="save_societe.php" method="post" class="form-horizontal" role="form">
+    <input type="hidden" name="auteur" value="<?php echo $_SESSION["NAME"]; ?>">
     <div class="form-group">
         <label for="nom" class="col-sm-2 control-label">Nom de la société</label>
         <div class="col-sm-10">
