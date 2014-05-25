@@ -42,7 +42,7 @@ include 'header.php';
                 <select id="aud" name="id_aud" class="form-control">
                     <option selected="selected" disabled="disabled">Séléctionner une audiance</option>
             <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>
-                                                                                                                    <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
+                                                                                                                                <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
             <?php endforeach; ?>         
                 </select>
             </div>
@@ -70,6 +70,8 @@ include 'header.php';
                 <!-- Default panel contents -->
                 <div class="panel-heading"><?php echo "DOSS_" . $dossier['id']; ?> créé le <?php echo Fonctions::dateTimeSqlToFr($dossier['date_doss']); ?></div>
                 <div class="panel-body">
+                    <?php $salarie=Fonctions::getSalarieById($dossier['id_sal']); ?>
+                    <h2>Salarié: <?php echo $salarie['nom_sal']." ".$salarie['prenom_sal']; ?></h2>
                     <h2>Défenseur: <?php echo $dossier['defenseur']; ?></h2>
                     <p>
 
@@ -100,29 +102,35 @@ include 'header.php';
                 </div>
 
                 <!-- Table -->
-                <h4 class="titre">Liste des audiences</h4>
-                <table class="table table-condensed table-striped">
-                    <tr><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
-                    <?php foreach (Fonctions::getAudienceByIdDossier($dossier['id']) as $audiances => $audiance) : ?>
-                        <tr id="line-audiance_<?php echo $audiance['id']; ?>">
-                            <td><?php echo $audiance['rg']; ?></td>
-                            <td><?php echo $audiance['jurdiction']; ?></td>
-                            <td><?php echo $audiance['type_aud']; ?></td>
-                            <td><?php echo $audiance['sect_aud']; ?></td>
-                            <td><?php echo Fonctions::dateTimeSqlToFr($audiance['date_aud']); ?></td>
-                            <td>
-                                <a href="manager/modif_audiance_form.php?val=<?php echo $audiance['id']; ?>" class="btn btn-primary" id="modif-audiance_<?php echo $audiance['id']; ?>">
-                                    Modifier
-                                </a>
-                            </td>
-                            <td>
-                                <label id-delete-audiance="<?php echo $audiance['id']; ?>" class="delete-audiance btn btn-danger" id="sup-audiance_<?php echo $audiance['id']; ?>">
-                                    Supprimer
-                                </label>
-                            </td>
-                        </tr> 
-                    <?php endforeach; ?>
-                </table>
+                <div class="panel panel-info col-lg-offset-1">
+                    <div class="panel-heading">
+                        <h1 class="panel-title titre">Liste des audiences</h1>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-condensed table-striped">
+                            <tr><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Modifier</th><th>Supprimer</th></tr>
+                            <?php foreach (Fonctions::getAudienceByIdDossier($dossier['id']) as $audiances => $audiance) : ?>
+                                <tr id="line-audiance_<?php echo $audiance['id']; ?>">
+                                    <td><?php echo $audiance['rg']; ?></td>
+                                    <td><?php echo $audiance['jurdiction']; ?></td>
+                                    <td><?php echo $audiance['type_aud']; ?></td>
+                                    <td><?php echo $audiance['sect_aud']; ?></td>
+                                    <td><?php echo Fonctions::dateTimeSqlToFr($audiance['date_aud']); ?></td>
+                                    <td>
+                                        <a href="manager/modif_audiance_form.php?val=<?php echo $audiance['id']; ?>" class="btn btn-primary" id="modif-audiance_<?php echo $audiance['id']; ?>">
+                                            Modifier
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <label id-delete-audiance="<?php echo $audiance['id']; ?>" class="delete-audiance btn btn-danger" id="sup-audiance_<?php echo $audiance['id']; ?>">
+                                            Supprimer
+                                        </label>
+                                    </td>
+                                </tr> 
+                            <?php endforeach; ?>
+                        </table>                    </div>
+                </div>
+
             </div>
 
         <?php endforeach; ?>

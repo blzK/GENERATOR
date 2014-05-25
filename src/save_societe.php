@@ -18,11 +18,12 @@ if (filter_input(INPUT_POST, 'nom') && filter_input(INPUT_POST, 'siren') &&
         $avad_soc = filter_input(INPUT_POST, 'avad_soc');
         $bonis_soc = filter_input(INPUT_POST, 'bonis_soc');
         $auteur = NULL;
-        include 'header.php';
         if (Fonctions::setSociete($nom, $siren, $ape, $sect_soc, $av_soc, $type, $ad_soc, $avad_soc, $bonis_soc, $auteur)) {
 
-            echo "<div class='alert alert-success'> " . $nom . " est enregistrée!</div>";
+            header("Location:societes.php");
         } else {
+            include 'header.php';
+
             echo "<div class='alert alert-danger'> l' enregistrement a rencontre un problème.</div>";
         }
         echo"<div><a class='btn btn-lg btn-primary' href='index.php'>Retour à l'accueil</a></div>";

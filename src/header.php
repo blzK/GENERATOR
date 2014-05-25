@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+include "connect.php";
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +21,7 @@
         <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans|Oswald|Ubuntu|Patua+One" type="text/css" rel="stylesheet" />-->
         <link href="css/custom.css" type="text/css" rel="stylesheet" />
         <link href="css/signin.css" type="text/css" rel="stylesheet" />
-         <link href="css/footer.css" type="text/css" rel="stylesheet" />
+        <link href="css/footer.css" type="text/css" rel="stylesheet" />
         <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery-ui.js"></script>
@@ -31,8 +36,8 @@
 
                 <div class="navbar-inner">
                     <a class="col-lg-offset-2 pull-left" href="index.php"><img src="img/logo.png"
-                                                                       height="60" alt="logo"
-                                                                       /></a>
+                                                                               height="60" alt="logo"
+                                                                               /></a>
                     <div class="col-lg-offset-3">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -49,24 +54,22 @@
                             <ul class="nav navbar-nav">
 
                                 <?php
-								//démarrage d'une session
-								session_start();
-								//verification la variable de session a été initialisé
-								if (isset($_POST['NAME']))
+//démarrage d'une session
+//verification la variable de session a été initialisé
                                 if ($_SESSION["NAME"]) {
                                     echo'<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <span class="label label-success"><span class="glyphicon glyphicon-user"></span>' . $_SESSION["NAME"] . '</span> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        
+
                                         <li>
                                             <a href="logout.php"><span class="glyphicon glyphicon-off"> </span> Déconnexion</a>
                                         </li>
                                     </ul>';
                                 } else {
                                     echo' <li> 
-                                    <a href="user_form.php">Créer un compte</a>
-                                </li>';
+                                        <a href="user_form.php">Créer un compte</a>
+                                      </li>';
                                 }
                                 ?>
                                 <li class="dropdown">
@@ -87,23 +90,6 @@
                                     </ul>
                                 </li>
 
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>Audiences <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="list-group-item">
-                                            <a href="audiance_form.php">
-                                                Ajouter une audience
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <a href="audiances.php">
-                                                Afficher les audiences
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-                                </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>Salariés <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -151,4 +137,4 @@
 
                 </div>
                 <div class="col-lg-10">
-</div>
+                </div>

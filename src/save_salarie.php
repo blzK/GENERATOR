@@ -16,11 +16,12 @@ if (filter_input(INPUT_POST, 'nom_sal') && filter_input(INPUT_POST, 'prenom_sal'
     $societe_sal = NULL;
     $auteur = NULL;
     $email = filter_input(INPUT_POST, 'email');
-    include 'header.php';
     if (Fonctions::setSalarie($nom, $prenom, $bdate_sal, $nation_sal, $ad_sal, $societe_sal, $email, $auteur)) {
 
-        echo "<div class='alert alert-success'> " . $prenom . " est enregistré!</div>";
+        header("Location:salaries.php");
     } else {
+        include 'header.php';
+
         echo "<div class='alert alert-danger'> l' enregistrement a rencontré un problème.</div>";
     }
     echo"<div><a class='btn btn-lg btn-primary' href='index.php'>Retour à l'accueil</a></div>";

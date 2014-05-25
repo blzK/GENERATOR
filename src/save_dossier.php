@@ -13,11 +13,12 @@ if (filter_input(INPUT_POST, 'defenseur') && filter_input(INPUT_POST, 'issue') &
     $id_sal = filter_input(INPUT_POST, 'id_sal');
     $id_soc = filter_input(INPUT_POST, 'id_soc');
     $auteur = NULL;
-    include 'header.php';
     if (Fonctions::setDossier($defenseur, $issue, $id_sal, $id_soc, $auteur)) {
 
-        echo "<div class='alert alert-success'> Le dossier est enregistré!</div>";
+        header("Location:dossiers.php");
     } else {
+        include 'header.php';
+
         echo "<div class='alert alert-danger'> l' enregistrement a rencontré un problème.</div>";
     }
     echo"<div><a class='btn btn-lg btn-primary' href='index.php'>Retour à l'accueil</a></div>";

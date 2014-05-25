@@ -1,6 +1,8 @@
 
 <?php
 include 'header.php';
+include 'auth.php';
+
 if (filter_input(INPUT_GET, 'form')) {
     if (filter_input(INPUT_GET, 'form') == "incomplet") {
         $msg = "<div class='alert alert-danger'>veillez remplir tous les champs du formulaire</div>";
@@ -130,7 +132,7 @@ if (filter_input(INPUT_GET, 'form')) {
         function showCallback(geocodeResult, parsedGeocodeResult) {
             $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
         }
-       
+
     });
 </script>
 <?php

@@ -1,8 +1,5 @@
 <?php
-
-session_start();
-
-
+include 'connect.php';
 if (!(isset($_SESSION["AUTH"]) && $_SESSION["AUTH"] == 1)) {
     if (!isset($_POST["login"]) || !isset($_POST["password"])) {
         $badlogin = 0;
@@ -10,10 +7,8 @@ if (!(isset($_SESSION["AUTH"]) && $_SESSION["AUTH"] == 1)) {
         exit();
     }
 // Verification Login
+    //header("Location:user_form.php?form=bad_pass");
 
-        //header("Location:user_form.php?form=bad_pass");
-
-    include "connect.php";
     $login = $_POST["login"];
     $passwd = $_POST["password"];
 
@@ -22,15 +17,17 @@ if (!(isset($_SESSION["AUTH"]) && $_SESSION["AUTH"] == 1)) {
              WHERE login='$login' AND pass_word='$passwd' ";
     $res = mysql_query($SQL);
 
-    if (!$res || !(mysql_num_rows($res) > 0)) {
-        $badlogin = 1;
-        include("login.php");
-        exit();
-    } else {
+
+    if (mysql_num_rows($res) > 0) {
         $_SESSION["AUTH"] = 1;
         $row = mysql_fetch_array($res);
         $_SESSION["NAME"] = $row['nom'];
         $_SESSION["USERID"] = $row['id'];
+    } else {
+        $badlogin = 1;
+
+        include("login.php");
+        exit();
     }
 
     mysql_close($conn);
