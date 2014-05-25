@@ -12,8 +12,9 @@ class Fonctions {
         }
     }
 
-    static function updateSociete($nom, $siren, $ape, $sect_soc, $av_soc, $type, $ad_soc, $avad_soc, $bonis_soc, $auteur) {
-        $req = "UPDATE societe SET (nom,siren,ape,sect_soc,av_soc,type,ad_soc,avad_soc,bonis_soc,auteur) VALUES('$nom','$siren','$ape','$sect_soc','$av_soc','$type','$ad_soc','$avad_soc','$bonis_soc','$auteur') ";
+    static function updateSociete($id, $nom, $siren, $ape, $sect_soc, $av_soc, $type, $ad_soc, $avad_soc, $bonis_soc, $auteur) {
+        $req = "UPDATE societe SET nom='$nom',siren='$siren',ape='$ape',sect_soc='$sect_soc',av_soc='$av_soc',type='$type',ad_soc='$ad_soc',avad_soc='$avad_soc',bonis_soc='$bonis_soc',auteur='$auteur' WHERE id=$id ";
+        echo $req;
         return mysql_query($req);
     }
 
@@ -28,7 +29,7 @@ class Fonctions {
     }
 
     static function updateSalarie($id, $nom, $prenom, $bdate_sal, $nation_sal, $ad_sal, $societe_sal, $email, $auteur) {
-        $req = "UPDATE salarie nom_sal='$nom',prenom_sal='$prenom',bdate_sal='$bdate_sal',nation_sal='$nation_sal',ad_sal='$ad_sal',societe_sal='$societe_sal',email='$email',auteur='$auteur' WHERE id=$id ";
+        $req = "UPDATE salarie SET nom_sal='$nom',prenom_sal='$prenom',bdate_sal='$bdate_sal',nation_sal='$nation_sal',ad_sal='$ad_sal',societe_sal='$societe_sal',email='$email',auteur='$auteur' WHERE id=$id ";
         return mysql_query($req);
     }
 
@@ -42,8 +43,8 @@ class Fonctions {
         }
     }
 
-    static function updateAudiance($id, $rg, $jurdiction, $type_aud, $sect_aud,$id_dossier, $date_aud, $auteur) {
-        $req = "UPDATE audiance SET rg='$rg', jurdiction='$jurdiction', type_aud='$type_aud', sect_aud='$sect_aud',id_dossier=$id_dossier,date_aud='$date_aud',auteur='$auteur' WHERE id=$id";
+    static function updateAudiance($id, $rg, $jurdiction, $type_aud, $sect_aud, $date_aud, $auteur) {
+        $req = "UPDATE audiance SET rg='$rg', jurdiction='$jurdiction', type_aud='$type_aud', sect_aud='$sect_aud',date_aud='$date_aud',auteur='$auteur' WHERE id=$id";
         echo $req;
         return mysql_query($req);
     }
@@ -85,8 +86,8 @@ class Fonctions {
             return false;
         }
     }
-    
-     static function getAudienceByIdDossier($id) {
+
+    static function getAudienceByIdDossier($id) {
         $res = mysql_query("SELECT * FROM audiance WHERE id_dossier=$id ORDER BY id DESC");
         if ($res) {
             $audiences = array();
@@ -98,7 +99,7 @@ class Fonctions {
             return false;
         }
     }
-    
+
     static function getDossierById($id) {
         $req = "SELECT * FROM dossier WHERE id=$id";
         $res = mysql_query($req);

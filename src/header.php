@@ -10,8 +10,8 @@ include "connect.php";
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="prud'home">
-        <meta name="author" content="Eric Blaise Mohamed">
-        <title>Projet</title>
+        <meta name="author" content="Eric, Blaise, Mohamed">
+        <title>Projet de Web 2.0</title>
 
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
         <link href="css/bootstrap-theme.min.css" type="text/css" rel="stylesheet" />
@@ -73,8 +73,8 @@ include "connect.php";
                                 }
                                 ?>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>Sociétés <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span>Sociétés <b class="caret"></b></a>
+                                    <ul class="dropdown-menu menu">
                                         <li class="list-group-item">
                                             <a href="societe_form.php">
                                                 Ajouter une société 
@@ -91,8 +91,8 @@ include "connect.php";
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>Salariés <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span>Salariés <b class="caret"></b></a>
+                                    <ul class="dropdown-menu menu">
                                         <li class="list-group-item">
                                             <a href="salarie_form.php">
                                                 Ajouter un salarié
@@ -109,7 +109,7 @@ include "connect.php";
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>Dossiers <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-briefcase"></span>Dossiers <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li class="list-group-item">
                                             <a href="dossier_form.php">
