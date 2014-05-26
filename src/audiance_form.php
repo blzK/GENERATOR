@@ -1,7 +1,11 @@
 <?php
+session_start();
+
 include 'header.php';
 require 'Fonctions.php';
 include 'connect.php';
+include 'auth.php';
+
 
 if (filter_input(INPUT_GET, 'val')) {
     $dossier = Fonctions::getDossierById(filter_input(INPUT_GET, 'val'));

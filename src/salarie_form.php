@@ -1,5 +1,7 @@
 
 <?php
+session_start();
+
 include 'header.php';
 include 'auth.php';
 
@@ -56,7 +58,7 @@ if (filter_input(INPUT_GET, 'form')) {
                 <div class="col-sm-10">
                     <input type="text" name="ad_sal" class="form-control" id="addresspicker_map" required placeholder="Adresse">
                 </div>
-                <div class="row">
+<!--                <div class="row">
                     <div class='col-sm-offset-2 col-sm-5'>
                         <div class="form-group">
                             <label class="">Localité: </label>
@@ -90,7 +92,7 @@ if (filter_input(INPUT_GET, 'form')) {
                     <div class='col-sm-5 cadre'>
                         <div id="map_adr"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
             <hr/>
             <div class="form-group">

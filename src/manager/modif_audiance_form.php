@@ -5,6 +5,7 @@ include 'header.php';
 include '../connect.php';
 require '../Fonctions.php';
 
+
 if (filter_input(INPUT_GET, 'val')) {
     $audiance = Fonctions::getAudianceById(filter_input(INPUT_GET, 'val'));
 }
