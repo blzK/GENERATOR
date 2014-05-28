@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-warning">
 
     <div class="panel-body">
         <h1 class="col-lg-offset-3">

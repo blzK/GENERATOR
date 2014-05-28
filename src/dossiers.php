@@ -4,12 +4,19 @@ require 'Fonctions.php';
 include 'header.php';
 ?>
 <div class="row">
-    <div class="panel panel-info">
+    <div class="panel panel-warning">
         <div class="panel-heading">
             <h1 class="panel-title titre">Liste des dossiers</h1>
         </div>
         <div class="panel-body">
             <div class="col-lg-3">
+                <form class="form-inline" role="form" action="" method="post">
+                    <div class="form-group">
+                        <input type="search" name="chercher" class="form-control" id="chercher" placeholder="chercher par défenseur">
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Chercher</button>
+                </form>
                 <h3>Filtrer</h3>
                 <form action="" method="post" class="form-horizontal affiche" role="form">
                     <label for="defenseur" class="control-label">Défenseur</label>
@@ -47,15 +54,15 @@ include 'header.php';
                         <select id="aud" name="id_aud" class="form-control">
                             <option selected="selected" disabled="disabled">Séléctionner une audiance</option>
                     <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>
-                                                                                                                                                    <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
+                                                                                                                                                            <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
                     <?php endforeach; ?>         
                         </select>
                     </div>
                     -->
                     <br/>
                     <div class="col-sm-offset col-sm">
-                        <button type="submit" class="btn btn-primary">Filtrer</button>
-                        <button class="btn btn-primary">Réinitialiser</button>
+                        <button type="submit" class="btn btn-warning">Filtrer</button>
+                        <button class="btn btn-warning">Réinitialiser</button>
                     </div>
                 </form>
             </div>
@@ -66,11 +73,13 @@ include 'header.php';
                         filter_input(INPUT_POST, 'id_soc', FILTER_VALIDATE_INT)) :
                     ?>
                     <?php $dossierss = Fonctions::getTablesAndSearch("dossier", filter_input(INPUT_POST, 'defenseur'), filter_input(INPUT_POST, 'id_sal'), filter_input(INPUT_POST, 'id_soc')); ?>
+                <?php elseif (filter_input(INPUT_POST, 'chercher')) : ?>
+                    <?php $dossierss = Fonctions::getSearchDossier("dossier", filter_input(INPUT_POST, 'chercher')); ?>
                 <?php else : ?>
                     <?php $dossierss = Fonctions::getTables("dossier"); ?>
                 <?php endif; ?>
                 <?php foreach ($dossierss as $dossiers => $dossier) : ?>
-                    <div class="panel panel-primary" id="line_<?php echo $dossier['id']; ?>">
+                    <div class="panel panel-warning" id="line_<?php echo $dossier['id']; ?>">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
                             <h4> <?php echo "DOSS_" . $dossier['id']; ?></h4>
@@ -85,12 +94,12 @@ include 'header.php';
                             <h4><b>Défenseur</b>: <?php echo $dossier['defenseur']; ?></h4>
 
                             <div class="btn-group">
-                                <label class="btn btn-default">
+                                <label class="btn btn-warning">
                                     <a href="audiance_form.php?val=<?php echo $dossier['id']; ?>" id="modif_<?php echo $dossier['id']; ?>">
                                         Ajouter une audiance
                                     </a>
                                 </label>
-                                <label class="btn btn-info">
+                                <label class="btn btn-warning">
                                     <a href="manager/modif_dossier_form.php?val=<?php echo $dossier['id']; ?>" id="modif_<?php echo $dossier['id']; ?>">
                                         Modifier
                                     </a>
@@ -102,7 +111,7 @@ include 'header.php';
                                         <div class="btn btn-danger">Désactivé</div>
                                     <?php endif; ?>
                                 </label>
-                                <label id-delete="<?php echo $dossier['id']; ?>" class="delete btn btn-danger" id="sup_<?php echo $dossier['id']; ?>">
+                                <label id-delete="<?php echo $dossier['id']; ?>" class="delete btn btn-warning" id="sup_<?php echo $dossier['id']; ?>">
                                     Supprimer
                                 </label>
                             </div>
@@ -111,13 +120,13 @@ include 'header.php';
                         </div>
 
                         <!-- Table -->
-                        <div class="panel panel-info col-lg-offset-1">
+                        <div class="panel panel-warning col-lg-offset-1">
                             <div class="panel-heading">
-                                <h1 class="panel-title titre">Liste des audiences</h1>
+                                <h1 class="panel-title titre">Liste des audiances</h1>
                             </div>
                             <div class="panel-body">
                                 <table class="table table-condensed table-striped">
-                                    <tr><th>RG</th><th>Juridiction</th><th>Type d'audience</th><th>Section</th><th>Date d'audience</th><th>Auteur</th><th>Modifier</th><th>Supprimer</th></tr>
+                                    <tr><th>RG</th><th>Juridiction</th><th>Type d'audiance</th><th>Section</th><th>Date d'audiance</th><th>Auteur</th><th>Modifier</th><th>Supprimer</th></tr>
                                     <?php foreach (Fonctions::getAudienceByIdDossier($dossier['id']) as $audiances => $audiance) : ?>
                                         <tr id="line-audiance_<?php echo $audiance['id']; ?>">
                                             <td><?php echo $audiance['rg']; ?></td>
@@ -127,12 +136,12 @@ include 'header.php';
                                             <td><?php echo Fonctions::dateTimeSqlToFr($audiance['date_aud']); ?></td>
                                             <td><?php echo $audiance['auteur']; ?></td>
                                             <td>
-                                                <a href="manager/modif_audiance_form.php?val=<?php echo $audiance['id']; ?>" class="btn btn-primary" id="modif-audiance_<?php echo $audiance['id']; ?>">
+                                                <a href="manager/modif_audiance_form.php?val=<?php echo $audiance['id']; ?>" class="btn btn-warning" id="modif-audiance_<?php echo $audiance['id']; ?>">
                                                     Modifier
                                                 </a>
                                             </td>
                                             <td>
-                                                <label id-delete-audiance="<?php echo $audiance['id']; ?>" class="delete-audiance btn btn-danger" id="sup-audiance_<?php echo $audiance['id']; ?>">
+                                                <label id-delete-audiance="<?php echo $audiance['id']; ?>" class="delete-audiance btn btn-warning" id="sup-audiance_<?php echo $audiance['id']; ?>">
                                                     Supprimer
                                                 </label>
                                             </td>
@@ -163,7 +172,7 @@ include 'header.php';
         });
         $(".delete-audiance").click(function() {
             var id = $(this).attr("id-delete-audiance");
-            if (confirm('Etes-vous sûr de vouloir supprimer cette audience ?')) {
+            if (confirm('Etes-vous sûr de vouloir supprimer cette audiance ?')) {
                 $("#sup-audiance_" + id).load("manager/delete_audiance.php?val=" + id)
                 $("#line-audiance_" + id).hide();
             }

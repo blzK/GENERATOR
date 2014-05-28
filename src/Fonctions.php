@@ -192,6 +192,48 @@ class Fonctions {
         }
     }
 
+    static function getSearchSociete($table, $chercher) {
+        $req = "SELECT * FROM " . $table . " WHERE nom = '$chercher' OR siren = '$chercher' ORDER BY id DESC";
+        $res = mysql_query($req);
+        if ($res) {
+            $array = array();
+            while ($row = mysql_fetch_array($res)) {
+                $array[] = $row;
+            }
+            return $array;
+        } else {
+            return false;
+        }
+    }
+
+    static function getSearchSalarie($table, $chercher) {
+        $req = "SELECT * FROM " . $table . " WHERE nom_sal = '$chercher' OR email = '$chercher' OR prenom_sal = '$chercher' ORDER BY id DESC";
+        $res = mysql_query($req);
+        if ($res) {
+            $array = array();
+            while ($row = mysql_fetch_array($res)) {
+                $array[] = $row;
+            }
+            return $array;
+        } else {
+            return false;
+        }
+    }
+
+    static function getSearchDossier($table, $chercher) {
+        $req = "SELECT * FROM " . $table . " WHERE defenseur = '$chercher' ORDER BY id DESC";
+        $res = mysql_query($req);
+        if ($res) {
+            $array = array();
+            while ($row = mysql_fetch_array($res)) {
+                $array[] = $row;
+            }
+            return $array;
+        } else {
+            return false;
+        }
+    }
+
     static function getTables($table) {
         $req = "SELECT * FROM " . $table . " ORDER BY id DESC";
         $res = mysql_query($req);

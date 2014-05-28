@@ -9,7 +9,7 @@ if (filter_input(INPUT_POST, 'nom') && filter_input(INPUT_POST, 'prenom') &&
         $prenom = filter_input(INPUT_POST, 'prenom');
         $login = filter_input(INPUT_POST, 'login');
         $email = filter_input(INPUT_POST, 'email');
-        $pass_word = filter_input(INPUT_POST, 'mdp');
+        $pass_word = md5(filter_input(INPUT_POST, 'mdp'));
         include 'header.php';
         if (Fonctions::setUser($nom, $prenom, $login, $pass_word, $email)) {
 

@@ -17,7 +17,7 @@ if (filter_input(INPUT_GET, 'form')) {
 }
 ?>
 
-<div class="panel panel-primary">
+<div class="panel panel-warning">
     <div class="panel-heading">
         <h3 class="panel-title titre">Edition d'une audiance</h3>
     </div>

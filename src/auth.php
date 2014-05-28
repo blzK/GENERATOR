@@ -1,4 +1,5 @@
 <?php
+
 include 'connect.php';
 if (!(isset($_SESSION["AUTH"]) && $_SESSION["AUTH"] == 1)) {
     if (!isset($_POST["login"]) || !isset($_POST["password"])) {
@@ -10,7 +11,7 @@ if (!(isset($_SESSION["AUTH"]) && $_SESSION["AUTH"] == 1)) {
     //header("Location:user_form.php?form=bad_pass");
 
     $login = $_POST["login"];
-    $passwd = $_POST["password"];
+    $passwd = md5($_POST["password"]);
 
     $SQL = "SELECT id,nom
              FROM user
