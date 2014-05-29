@@ -4,7 +4,7 @@ require 'Fonctions.php';
 include 'header.php';
 ?>
 <div class="row">
-    <div class="panel panel-warning">
+    <div class="panel panel-warning col-lg-offset-1">
         <div class="panel-heading">
             <h1 class="panel-title titre">Liste des dossiers</h1>
         </div>
@@ -15,7 +15,7 @@ include 'header.php';
                         <input type="search" name="chercher" class="form-control" id="chercher" placeholder="chercher par défenseur">
                     </div>
 
-                    <button type="submit" class="btn btn-default">Chercher</button>
+                    <button type="submit" class="btn btn-warning">Chercher</button>
                 </form>
                 <h3>Filtrer</h3>
                 <form action="" method="post" class="form-horizontal affiche" role="form">
@@ -54,7 +54,7 @@ include 'header.php';
                         <select id="aud" name="id_aud" class="form-control">
                             <option selected="selected" disabled="disabled">Séléctionner une audiance</option>
                     <?php foreach (Fonctions::getTables("audiance") as $audiances => $audiance) : ?>
-                                                                                                                                                            <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
+                                                                                                                                                                <option value="<?php echo $audiance['id']; ?>"><?php echo $audiance['rg']; ?></option>
                     <?php endforeach; ?>         
                         </select>
                     </div>
@@ -120,7 +120,7 @@ include 'header.php';
                         </div>
 
                         <!-- Table -->
-                        <div class="panel panel-warning col-lg-offset-1">
+                        <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h1 class="panel-title titre">Liste des audiances</h1>
                             </div>
@@ -133,7 +133,7 @@ include 'header.php';
                                             <td><?php echo $audiance['jurdiction']; ?></td>
                                             <td><?php echo $audiance['type_aud']; ?></td>
                                             <td><?php echo $audiance['sect_aud']; ?></td>
-                                            <td><?php echo Fonctions::dateTimeSqlToFr($audiance['date_aud']); ?></td>
+                                            <td><?php echo $audiance['date_aud']; ?></td>
                                             <td><?php echo $audiance['auteur']; ?></td>
                                             <td>
                                                 <a href="manager/modif_audiance_form.php?val=<?php echo $audiance['id']; ?>" class="btn btn-warning" id="modif-audiance_<?php echo $audiance['id']; ?>">

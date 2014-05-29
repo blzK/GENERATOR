@@ -53,25 +53,6 @@ include "connect.php";
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                             <ul class="nav navbar-nav">
 
-                                <?php
-//démarrage d'une session
-//verification la variable de session a été initialisé
-                                if ($_SESSION["NAME"]) {
-                                    echo'<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="label label-success"><span class="glyphicon glyphicon-user"></span>' . $_SESSION["NAME"] . '</span> <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-
-                                        <li>
-                                            <a href="logout.php"><span class="glyphicon glyphicon-off"> </span> Déconnexion</a>
-                                        </li>
-                                    </ul>';
-                                } else {
-                                    echo' <li> 
-                                        <a href="user_form.php">Créer un compte</a>
-                                      </li>';
-                                }
-                                ?>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span>Sociétés <b class="caret"></b></a>
                                     <ul class="dropdown-menu menu">
@@ -126,6 +107,29 @@ include "connect.php";
                                     </ul>
                                 </li>
 
+                                <?php
+//démarrage d'une session
+//verification la variable de session a été initialisé
+                                if ($_SESSION["NAME"]) {
+                                    echo'<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="label label-success"><span class="glyphicon glyphicon-user"></span>' . $_SESSION["NAME"] . '</span> <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="logout.php"><span class="glyphicon glyphicon-off"> </span> Déconnexion</a>
+                                        </li>
+                                    </ul>';
+                                } else {
+                                    echo' <li> 
+                                        <a href="user_form.php">Créer un compte</a>
+                                      </li>';
+                                }
+                                ?>
+                                <li>
+                                    <a href="twitter.php">API twitter</a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -133,8 +137,4 @@ include "connect.php";
             </nav>
 
             <div class="row">
-                <div class="col-lg-1">
-
-                </div>
-                <div class="col-lg-10">
-                </div>
+                

@@ -15,7 +15,7 @@ if (filter_input(INPUT_POST, 'rg') && filter_input(INPUT_POST, 'jurdiction') &&
     $date_aud = filter_input(INPUT_POST, 'date_aud');
     $id_dossier = filter_input(INPUT_POST, 'id_dossier');
     $auteur = filter_input(INPUT_POST, 'auteur');
-    if (Fonctions::setAudiance($rg, $jurdiction, $type_aud, $sect_aud, $id_dossier, $auteur)) {
+    if (Fonctions::setAudiance($rg, $jurdiction, $type_aud, $sect_aud, $id_dossier,$date_aud, $auteur)) {
 
         header("Location:dossiers.php");
     } else {

@@ -33,8 +33,8 @@ class Fonctions {
         return mysql_query($req);
     }
 
-    static function setAudiance($rg, $jurdiction, $type_aud, $sect_aud, $id_dossier, $auteur) {
-        $req = "INSERT INTO audiance(rg, jurdiction, type_aud, sect_aud,id_dossier,date_aud,auteur) VALUES('$rg', '$jurdiction', '$type_aud', '$sect_aud','$id_dossier',NOW(),'$auteur') ";
+    static function setAudiance($rg, $jurdiction, $type_aud, $sect_aud, $id_dossier,$date, $auteur) {
+        $req = "INSERT INTO audiance(rg, jurdiction, type_aud, sect_aud,id_dossier,date_aud,auteur) VALUES('$rg', '$jurdiction', '$type_aud', '$sect_aud','$id_dossier','$date','$auteur') ";
         $res = mysql_query($req);
         if ($res) {
             return true;

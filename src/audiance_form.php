@@ -12,7 +12,7 @@ if (filter_input(INPUT_GET, 'val')) {
 }
 ?>
 
-<div class="panel panel-warning">
+    <div class="panel panel-warning col-lg-offset-1 col-lg-10 col-lg-offset-1">
     <div class="panel-heading">
         <h3 class="panel-title titre">Edition d'une audience</h3>
     </div>
@@ -50,7 +50,7 @@ if (filter_input(INPUT_GET, 'val')) {
             <div class="form-group">
                 <label for="date_aud" class="col-sm-2 control-label">date de l'audience</label>
                 <div class="col-sm-10">
-                    <input type="date" name="date_aud" class="form-control" id="sect_aud" required placeholder="date de l'audience">
+                    <input type="date" name="date_aud" class="form-control" id="date_aud" required placeholder="date de l'audience">
                 </div>
             </div>
 
@@ -63,7 +63,14 @@ if (filter_input(INPUT_GET, 'val')) {
         </form>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(function() {
+        $("#date_aud").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: false
+        });
+    });
+</script>
 
 <?php
 include 'footer.php';

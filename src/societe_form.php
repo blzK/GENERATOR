@@ -14,7 +14,7 @@ if (filter_input(INPUT_GET, 'form')) {
 }
 ?>
 
-<div class="panel panel-warning">
+    <div class="panel panel-warning col-lg-offset-1 col-lg-10 col-lg-offset-1">
     <div class="panel-heading">
         <h3 class="panel-title titre">Edition d'une société</h3>
     </div>

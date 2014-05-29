@@ -5,7 +5,7 @@ require 'Fonctions.php';
 include 'header.php';
 ?>
 <div class="row">
-    <div class="panel panel-warning">
+    <div class="panel panel-warning col-lg-offset-1 col-lg-10 col-lg-offset-1">
         <div class="panel-heading">
             <h1 class="panel-title titre">Liste des salariés</h1>
         </div>
