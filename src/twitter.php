@@ -25,37 +25,29 @@ $connection = getConnectionWithAccessToken($consumerkey, $consumersecret, $acces
 $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" . $twitteruser . "&count=" . $notweets);
 // echo json_encode($tweets);
 ?>
-<div class="panel panel-warning col-lg-offset-1 col-lg-10 col-lg-offset-1">
+<div class="panel panel-warning">
     <div class="panel-heading">
-        <h1 class="panel-title titre">Les tweets de @<?php echo $twitteruser; ?></h1>
+        <h2 class="panel-title titre">Les tweets de @<?php echo $twitteruser; ?></h2>
     </div>
-    <br/>
-    <div class="col-lg-offset-1">
+    <div class="">
         <form class="form-inline" role="form" action="" method="post">
             <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">@</span>
-                    <input type="search" value="<?php echo $twitteruser; ?>" class="form-control" name="twitter_user" id="chercher" placeholder="twitter user sans @">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">nombre de tweets</span>
-                    <input type="number" value="<?php echo $notweets; ?>" class="form-control" name="twitter_nb" id="chercher" placeholder="nombre de tweets à afficher">
-                </div>
-                <div class="input-group">
-                    <button type="submit" class="btn btn-warning">Chercher</button>
-                </div>
+                <span class="input-group-addon">@
+                    <input class="small" type="search" value="<?php echo $twitteruser; ?>" class="form-control" name="twitter_user" id="chercher" placeholder="twitter user sans @">
+                    <input class="small" type="number" value="<?php echo $notweets; ?>" class="form-control" name="twitter_nb" id="chercher" placeholder="nombre de tweets à afficher">
+                    <input type="submit" class="btn btn-warning small" value="Afficher">
+                </span>
             </div>
-
         </form>
     </div>
     <div class="panel-body">
         <?php foreach ($tweets as $tweet): ?>
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object" src="<?php echo $tweet->user->profile_image_url; ?>" alt="...">
+                    <img class="media-object" src="<?php echo $tweet->user->profile_image_url; ?>" alt="<?php echo $tweet->user->name; ?>">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading"><?php echo $tweet->user->name . " @" . $tweet->user->screen_name; ?><small class="text-muted"> <?php echo $tweet->created_at; ?></small></h4>
+                    <h4 class="media-heading"><?php echo $tweet->user->name . " " . "<small class='text-muted'>" . ago($tweet->created_at, $tweet->id, $tweet->user->screen_name); ?> </small></h4>
                     <p>
                         <?php echo $tweet->text; ?>
                     </p>
@@ -63,7 +55,25 @@ $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.j
             </div>
         <?php endforeach; ?>
     </div>
-</div>      
+</div> 
+<?php
+
+// Simple function to get Twitter style "time ago"
+function ago($tweet_time, $tweet_id, $tweet_name) {
+
+    $m = time() - strtotime($tweet_time);
+    $o = 'il y a un instant';
+    $t = array('an' => 31556926, 'moi' => 2629744, 'semaine' => 604800, 'jours' => 86400, 'heure' => 3600, 'minute' => 60, 'second' => 1);
+    foreach ($t as $u => $s) {
+        if ($s <= $m) {
+            $v = floor($m / $s);
+            $o = 'il y a ' . $v . ' ' . $u . ($v == 1 ? '' : 's');
+            break;
+        }
+    }
+    return '<a href="http://twitter.com/' . $tweet_name . '/statuses/' . $tweet_id . '">@' . $tweet_name . '</a> ' . $o ;
+}
+?>
 
 
 

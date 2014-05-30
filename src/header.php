@@ -9,7 +9,7 @@ include "connect.php";
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="prud'home">
+        <meta name="description" content="conseil de prud'homme">
         <meta name="author" content="Eric, Blaise, Mohamed">
         <title>Projet de Web 2.0</title>
 
@@ -126,10 +126,6 @@ include "connect.php";
                                       </li>';
                                 }
                                 ?>
-                                <li>
-                                    <a href="twitter.php">API twitter</a>
-                                </li>
-
                             </ul>
                         </div>
                     </div>

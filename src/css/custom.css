@@ -130,16 +130,17 @@ p{
 
 
 .jumbotron {
-    background-color: yellowgreen;
-    /*color: inherit;*/
-    color: white;
-    font-size: 21px;
-    font-weight: 200;
-    line-height: 2.14286;
-    margin-bottom: 30px;
-    padding: 5px;
+    background-color: #F0F4F5;
+    color: black;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    padding: 3px;
 }
 .btn-group .active{
     color: yellowgreen;
     font-weight: bold;
+}
+.titre{
+    text-align: center;
 }

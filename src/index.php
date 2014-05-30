@@ -1,23 +1,31 @@
 <?php
 include 'header.php';
 ?>
-<?php
-include 'twitter.php';
-?>
 <div class="panel panel-warning">
 
     <div class="panel-body">
-        <h1 class="col-lg-offset-3">
-            Lorem ipsum dolor sit amet
-        </h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mi metus, euismod at fringilla ut, volutpat at libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget metus et neque ultricies porta id eu augue. Sed sit amet purus faucibus, convallis nulla eget, pretium nisl. Suspendisse tortor ante, venenatis sed ultricies eu, tristique sit amet felis. Etiam dolor neque, vehicula ut velit vel, pellentesque egestas justo. Quisque vulputate adipiscing leo. Vestibulum ut ipsum tristique, cursus ligula eget, suscipit magna. Pellentesque diam lectus, ultricies quis mi eget, commodo ultrices lorem. Suspendisse sed sapien arcu.
+        <div class="row jumbotron">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="titre">
+                        Conseil de prud'homme
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Ce site permettra à notre collègue Blaise, qui siège au conseil de prud'homme, de pouvoir gérer
+                        les dossiers des salariés qui ont des contentieux avec leurs employeurs.
+                    </p>
+                    <small class="col-lg-3">
+                        Blaise PERTEV<br/>
+                        Eric NINGABIYE<br/>
+                        Mohamed Mbodji
+                    </small>                
+                </div>
+            </div>
 
-            Donec vitae erat a justo tincidunt fermentum in sed nibh. Pellentesque non purus non ipsum convallis adipiscing eget sit amet mauris. Sed tempus, arcu ac vestibulum fringilla, nisi est fermentum magna, a posuere sem dolor nec justo. Phasellus ut lobortis libero, sit amet mattis nisl. Ut ac tellus eu mauris blandit semper at sit amet augue. Suspendisse ut mi at mi commodo viverra. In ut odio vitae sem feugiat dignissim. Proin congue, est in luctus tempus, turpis enim mattis sem, vitae molestie leo augue in dui.
-
-        </p>
-
-        <div id="carousel-accueil" class="carousel slide" data-ride="carousel">
+        </div>
+        <div id="carousel-accueil" class="carousel slide col-lg-6" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel-accueil" data-slide-to="0" class="active"></li>
@@ -61,7 +69,12 @@ include 'twitter.php';
             <a class="right carousel-control" href="#carousel-accueil" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
-        </div>  
+        </div>
+        <div class="col-lg-6">
+            <?php
+            include 'twitter.php';
+            ?>
+        </div>
     </div>
 </div>
 
