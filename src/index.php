@@ -1,7 +1,10 @@
 <?php
 include 'header.php';
 ?>
-    <div class="panel panel-warning col-lg-offset-1 col-lg-10 col-lg-offset-1">
+<?php
+include 'twitter.php';
+?>
+<div class="panel panel-warning">
 
     <div class="panel-body">
         <h1 class="col-lg-offset-3">
@@ -61,6 +64,7 @@ include 'header.php';
         </div>  
     </div>
 </div>
+
 
 <?php
 include 'footer.php';

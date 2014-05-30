@@ -1,7 +1,4 @@
 <?php
-include 'header.php';
-?>
-<?php
 require_once("twitteroauth/twitteroauth/twitteroauth.php"); //Path to twitteroauth library you downloaded in step 3
 if (filter_input(INPUT_POST, 'twitter_user')) {
     $twitteruser = filter_input(INPUT_POST, 'twitter_user'); //user name you input
@@ -11,7 +8,7 @@ if (filter_input(INPUT_POST, 'twitter_user')) {
 if (filter_input(INPUT_POST, 'twitter_nb') and filter_input(INPUT_POST, 'twitter_nb') > 0) {
     $notweets = filter_input(INPUT_POST, 'twitter_nb'); //user name you input
 } else {
-    $notweets = 10; //how many tweets you want to retrieve
+    $notweets = 3; //how many tweets you want to retrieve
 }
 $consumerkey = "6nCfstQSpCeiBytE8LVespni7";
 $consumersecret = "7gopHlXYG3CN9PQErtvQQaYvgvrylgMDAXsxmOsWvEI90erCqw";
@@ -38,11 +35,11 @@ $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.j
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">@</span>
-                    <input type="search" value="<?php echo $twitteruser;?>" class="form-control" name="twitter_user" id="chercher" placeholder="twitter user sans @">
+                    <input type="search" value="<?php echo $twitteruser; ?>" class="form-control" name="twitter_user" id="chercher" placeholder="twitter user sans @">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">nombre de tweets</span>
-                    <input type="number" value="<?php echo $notweets;?>" class="form-control" name="twitter_nb" id="chercher" placeholder="nombre de tweets à afficher">
+                    <input type="number" value="<?php echo $notweets; ?>" class="form-control" name="twitter_nb" id="chercher" placeholder="nombre de tweets à afficher">
                 </div>
                 <div class="input-group">
                     <button type="submit" class="btn btn-warning">Chercher</button>
@@ -67,9 +64,7 @@ $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.j
         <?php endforeach; ?>
     </div>
 </div>      
-<?php
-include 'footer.php';
-?>
+
 
 
 
