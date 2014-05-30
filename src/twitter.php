@@ -11,7 +11,7 @@ if (filter_input(INPUT_POST, 'twitter_user')) {
 if (filter_input(INPUT_POST, 'twitter_nb') and filter_input(INPUT_POST, 'twitter_nb') > 0) {
     $notweets = filter_input(INPUT_POST, 'twitter_nb'); //user name you input
 } else {
-    $notweets = 5; //how many tweets you want to retrieve
+    $notweets = 10; //how many tweets you want to retrieve
 }
 $consumerkey = "6nCfstQSpCeiBytE8LVespni7";
 $consumersecret = "7gopHlXYG3CN9PQErtvQQaYvgvrylgMDAXsxmOsWvEI90erCqw";
@@ -36,11 +36,19 @@ $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.j
     <div class="col-lg-offset-1">
         <form class="form-inline" role="form" action="" method="post">
             <div class="form-group">
-                <input type="search" class="form-control" name="twitter_user" id="chercher" placeholder="twitter user sans @">
-                <input type="number" class="form-control" name="twitter_nb" id="chercher" placeholder="nombre de tweets à afficher">
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="search" value="<?php echo $twitteruser;?>" class="form-control" name="twitter_user" id="chercher" placeholder="twitter user sans @">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">nombre de tweets</span>
+                    <input type="number" value="<?php echo $notweets;?>" class="form-control" name="twitter_nb" id="chercher" placeholder="nombre de tweets à afficher">
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="btn btn-warning">Chercher</button>
+                </div>
             </div>
-            <button type="submit" class="btn btn-warning">Chercher</button>
-            <button type="reset" class="btn btn-warning">Annuler</button>
+
         </form>
     </div>
     <div class="panel-body">
